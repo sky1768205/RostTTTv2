@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Каталог люков{% endblock %}
+{% block content %}
+<h1>Каталог люков</h1>
+<div class="products">
+    {% for product in products %}
+    <div style="margin-bottom: 20px;">
+        <h2>{{ product.name }}</h2>
+        <p>{{ product.description|truncatewords:20 }}</p>
+        {% if product.image %}
+        <img src="{{ product.image.url }}" width="200" alt="">
+        {% endif %}
+        <br>
+        <a href="{% url 'product_detail' product.pk %}">Подробнее</a>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
