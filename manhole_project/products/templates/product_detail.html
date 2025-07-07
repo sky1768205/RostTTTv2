@@ -2,12 +2,44 @@
 {% block title %}{{ product.name }}{% endblock %}
 {% block content %}
 <h1>{{ product.name }}</h1>
+
 {% if product.image %}
-<img src="{{ product.image.url }}" alt="" style="max-width: 500px;">
+<img src="{{ product.image.url }}" alt="" style="max-width: 300px;">
 <br><br>
 {% endif %}
-<p>{{ product.description }}</p>
+
+<p><strong>Описание:</strong> {{ product.description }}</p>
+
 <h3>Характеристики:</h3>
-<p>{{ product.specifications }}</p>
+<ul>
+    {% if product.naruzhnyy_razmer %}
+    <li><strong>Наружный размер:</strong> {{ product.naruzhnyy_razmer }}</li>
+    {% endif %}
+    {% if product.vysota %}
+    <li><strong>Высота:</strong> {{ product.vysota }}</li>
+    {% endif %}
+    {% if product.vnutrenniy_diametr %}
+    <li><strong>Внутренний диаметр:</strong> {{ product.vnutrenniy_diametr }}</li>
+    {% endif %}
+    {% if product.glubina_ustanovki_kryshki %}
+    <li><strong>Глубина установки крышки:</strong> {{ product.glubina_ustanovki_kryshki }}</li>
+    {% endif %}
+    {% if product.nominalnaya_nagruzka %}
+    <li><strong>Номинальная нагрузка:</strong> {{ product.nominalnaya_nagruzka }}</li>
+    {% endif %}
+    {% if product.ves %}
+    <li><strong>Вес:</strong> {{ product.ves }}</li>
+    {% endif %}
+    {% if product.tip_vesa %}
+    <li><strong>Тип по весу:</strong> {{ product.tip_vesa }}</li>
+    {% endif %}
+    {% if product.kolichestvo_na_km %}
+    <li><strong>Количество на 1 км:</strong> {{ product.kolichestvo_na_km }}</li>
+    {% endif %}
+    {% if product.temperaturnyy_diapazon %}
+    <li><strong>Температурный диапазон:</strong> {{ product.temperaturnyy_diapazon }}</li>
+    {% endif %}
+</ul>
+
 <a href="{% url 'product_list' %}">Назад в каталог</a>
 {% endblock %}
